@@ -23,6 +23,7 @@ class SimpleNeuralNetwork:
         back_propagation: Performs backpropagation in the neural network.
         train: Trains the neural network.
         total_parameters: Calculates the total number of parameters in the neural network.
+        evaluate: Evaluates the neural network.
     """
 
     def __init__(self, *layer_sizes: Tuple[int], activation_function: Type[ActivationFunction]) -> None:
