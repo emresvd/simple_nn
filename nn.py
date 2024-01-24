@@ -117,3 +117,19 @@ class SimpleNeuralNetwork:
             int: Total number of parameters.
         """
         return sum([self.weights[i].size + self.biases[i].size for i in range(len(self.layer_sizes) - 1)])
+
+    def evaluate(self, x: np.ndarray, y: np.ndarray) -> List[float]:
+        """
+        Evaluates the neural network model using the given input data and labels.
+
+        Args:
+            x (np.ndarray): The input data.
+            y (np.ndarray): The labels.
+
+        Returns:
+            List[float]: The loss and accuracy of the model.
+        """
+        output: np.ndarray = self.feed_forward(x)
+        loss: float = np.mean(np.square(y - output))
+        acc: float = np.mean(np.equal(np.argmax(output, axis=1), np.argmax(y, axis=1)))
+        return [loss, acc]
